@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot UI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="chatbot">
+        <div id="chatbox">
+            <div id="chatbox-header">
+                <div class="bot-icon-container">
+                    <img src="images/bot-icon.jpeg" alt="Bot Icon" class="bot-icon">
+                </div>
+                <div class="header-content">
+                    <div class="bot-name">Wyse</div>
+                </div>
+                <div class="chatbox-buttons">
+                    <!-- Removed minimize and end chat buttons -->
+                </div>
+            </div>
+            <div id="chat-content"></div>
+            <div id="chat-input">
+                <textarea id="user-input" placeholder="Type your message..." aria-label="User Input"></textarea>
+                <button id="send-button" aria-label="Send Message" class="hidden">
+                    <img src="images/send-icon.png" alt="Send">
+                </button>
+                <button id="generate-button" aria-label="Generate Response">
+                    <img src="images/generate-icon.png" alt="Generate">
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="chatbot-button">
+        <img src="images/chat-icon.png" alt="Chatbot Icon" id="chatbot-icon">
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

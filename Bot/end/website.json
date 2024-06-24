@@ -1,0 +1,34 @@
+{
+    "Matchwyse": {
+      "description": "Matchwyse provides a nice opportunity to make both friendly and romantic connections with real people.",
+      "features": [
+        {
+          "name": "Discovery game",
+          "description": "Play our popular Discovery game and get matched with other users."
+        },
+        {
+          "name": "Like",
+          "description": "Like is a great way to break the ice and chat with new people."
+        },
+        {
+          "name": "City map",
+          "description": "Find remarkable people on your city map, get in touch and have a great time together!"
+        }
+      ],
+      "download_info": "The application is free to download.",
+      "terms_of_use": {
+        "name": "Matchwyse",
+        "contact": {
+          "phone": "(+1) 862-339-8978",
+          "email": "wr0715200@gmail.com"
+        },
+        "url": "https://matchwyse.com//index.php?page=tac"
+      },
+      "privacy_policy": {
+        "name": "Matchwyse",
+        "title": "Privacy Policy",
+        "url": "https://matchwyse.com//index.php?page=pp"
+      }
+    }
+  }
+  

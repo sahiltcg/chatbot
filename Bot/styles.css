@@ -1,0 +1,612 @@
+@font-face {
+    font-family: 'Volkswagen Serial Medium';
+    src: url('fonts/Volkswagen-Serial-Medium-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Volkswagen Serial Medium', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#chatbot {
+    position: fixed;
+    bottom: 86px;
+    right: 16px;
+    display: none;
+    flex-direction: column;
+    width: 360px;
+    height: 520px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateX(50%);
+    transition: transform 0.6s, opacity 0.6s;
+    border: none;
+}
+
+#chatbox {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: none;
+}
+
+.bot-message-container .bot-icon {
+    width: 26px; /* Adjust width */
+    height: 26px; /* Adjust height */
+    margin-bottom: 0px;
+    border: none;
+}
+
+#chatbox-header {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background: linear-gradient(90deg, #8643ee, #b536f7);
+    color: white;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height: 63px;
+    overflow: visible;
+    transition: height 0.4s;
+    border: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bot-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    margin-left: 20px;
+    visibility: hidden;
+    opacity: 0.5;
+    transform: scale(0.8);
+}
+
+.bot-icon-container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.header-content {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.bot-name {
+    font-weight: lighter;
+    opacity: 0;
+    margin-left: 7px;
+    border: none;
+    text-shadow: none;
+}
+
+.chatbox-buttons button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+#chat-content {
+    flex-grow: 1;
+    padding: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+#chat-content::-webkit-scrollbar {
+    width: 0;
+}
+
+.message-container {
+    display: flex;
+    margin: 8px 0;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.bot-message-container {
+    align-self: flex-start;
+    flex-direction: row;
+    border: none;
+    margin-left: 1px;
+}
+
+.user-message-container {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+    margin-right: 8px;
+
+}
+
+.message {
+    padding: 16px 16px; /* Adjusted padding for better text spacing */
+    border-radius: 15px; /* Smaller border radius for a cleaner look */
+    max-width: 80%;
+    font-size: 14px; /* Improved readability with a standard font size */
+    line-height: 1.5; /* Increased line height for better text spacing */
+    word-break: break-word; /* Ensures text breaks properly */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    font-family: 'Volkswagen Serial Medium', Arial, sans-serif;
+    white-space: pre-wrap; /* Preserve line breaks */
+}   
+
+.bot-message {
+    background-color: #f0f0f0;
+    margin-left: 13px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 12px;
+    border: none;
+}
+
+.user-message {
+    background: linear-gradient(90deg, #b536f7, #8643ee);
+    color: white;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 12px;
+    margin: 5px; /* Add margin for spacing */
+}
+
+.bot-icon {
+    width: 100%;
+    height: 100%;
+}
+
+#chat-input {
+    display: flex;
+    padding: 8px;
+    border-top: 2px solid #f0f0f0;
+    border-bottom-left-radius: 25px;
+}
+
+#chat-input textarea {
+    flex-grow: 1;
+    border-radius: 4px;
+    margin-right: 50px;
+    max-height: 120px;
+    overflow-y: scroll; /* Enable vertical scrolling */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    resize: none;
+    box-sizing: border-box;
+    padding: 10px;
+    border-bottom-left-radius: 25px;
+    border: none;
+    height: 45px;
+    background-color: #ffffff;
+    font-size: 14px; /* Improved readability with a standard font size */
+    line-height: 1.5; /* Increased line height for better text spacing */
+    word-break: break-word; /* Ensures text breaks properly */
+    box-shadow: 0 1px 3px rgba(1, 1, 1, 0.3); /* Subtle shadow for depth */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Changed font */
+    white-space: pre-wrap; /* Preserve line breaks */
+}
+
+#chat-input textarea::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+#chat-input textarea:focus {
+    outline: none;
+}
+
+#chat-input button {
+    position: fixed;
+    bottom: 10px;
+    right: 12px;
+    border: none;
+    background-color: #ffffff00;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    width: 42px;
+}
+
+#send-button img {
+    width: 34px;
+    height: 34px;
+}
+
+#generate-button img{
+    height: 30px;
+    width: 30px;
+}
+
+#chatbot-button {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    width: 62px;
+    height: 62px;
+    background: linear-gradient(45deg, #8150f5, #c250ff);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.5s ease, border 0.5s ease;
+}
+
+#chatbot-button img {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+#chatbot-button img.end-chat-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes chatbox-open {
+    0% {
+        transform: translateX(10%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes chatbox-close {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes rotate-button-open {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-90deg);
+    }
+}
+
+@keyframes rotate-image-open {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-270deg);
+    }
+}
+
+@keyframes rotate-button-close {
+    0% {
+        transform: rotate(-90deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes rotate-image-close {
+    0% {
+        transform: rotate(-270deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes bot-icon-visibility {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes bot-icon-popup {
+    0% {
+        transform: scale(0.4);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bot-name-visibility {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes header-popup {
+    0% {
+        transform: scaley(0.5);
+        transform-origin: top;
+    }
+    100% {
+        transform: scaley(1);
+        transform-origin: top;
+    }
+}
+
+@keyframes increase-visibility {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes dot-loading {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pop-up {
+    0% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.message-container.bot-message-container {
+    animation: increase-visibility 0.3s forwards;
+}
+
+.dot-loading {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+    background: #333;
+    border-radius: 50%;
+    display: inline-block;
+    animation: dot-loading 0.8s infinite;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.message-container.bot-message-container.pop {
+    animation: pop-up 0.3s forwards;
+}
+
+.bot-icon {
+    align-self: flex-end;
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fade-in-dots {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slide-in {
+    0% { transform: translateY(30px); }
+    100% { transform: translateY(0); }
+}
+
+.bot-message-container.fade-in {
+    animation: fade-in 0.5s ease forwards;
+}
+
+.dot-loading.fade-in {
+    animation: fade-in-dots 0.5s ease forwards;
+}
+
+.message.fade-in {
+    animation: fade-in 0.5s ease forwards;
+}
+
+.message-container.bot-message-container.slide-in {
+    animation: slide-in 0.5s ease forwards;
+}
+
+.user-message-container.fade-in {
+    animation: fade-in 0.5s ease forwards;
+}
+
+.user-message-container.pop-up {
+    animation: pop-up 0.3s ease forwards;
+}
+
+.message.user-message.fade-in {
+    animation: fade-in 0.5s ease forwards;
+}
+
+.message.user-message.pop-up {
+    animation: pop-up 0.3s ease forwards;
+}
+
+@keyframes slide-in-left {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.user-message-container.slide-in-left {
+    animation: slide-in-left 0.5s ease forwards;
+}
+
+/* Add these animations at the end of your existing CSS */
+@keyframes pop-in {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes move-in {
+    0% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes move-out {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes pop-out {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+#generate-button.pop-in {
+    animation: pop-in 0.3s forwards;
+}
+
+#send-button.move-in {
+    animation: move-in 0.3s forwards;
+}
+
+#send-button.pop-in {
+    animation: pop-in 0.3s forwards;
+}
+
+#generate-button.move-in {
+    animation: move-in 0.3s forwards;
+}
+
+/* Add these styles to the existing CSS */
+.image-message {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin: 8px 0;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    border: 1px solid #ddd;
+    display: block;
+}
+
+.link-message {
+    color: #1a0dab;
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 8px 0;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.generated-image {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin: 8px 0;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    border: 1px solid #ddd;
+    display: block;
+    cursor: pointer;
+}
+
+/* Adjusted to handle different message types */
+.bot-message-container .bot-icon {
+    width: 26px; /* Adjust width */
+    height: 26px; /* Adjust height */
+    margin-bottom: 0px;
+    border: none;
+    margin-right: 10px; /* Added margin for better spacing */
+}
+
+/* Adjusted to improve spacing and alignment */
+.message-container {
+    display: flex;
+    margin: 8px 0;
+    max-width: 80%;
+    word-wrap: break-word;
+    align-items: center; /* Ensure alignment with image messages */
+}
